@@ -5,4 +5,4 @@ pip install -r requirements.txt
 python train_model.py
 
 # Lancement de l'application Streamlit
-streamlit run app.py
+streamlit run app.py --server.runOnSave true
