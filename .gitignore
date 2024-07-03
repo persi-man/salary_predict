@@ -1,0 +1,6 @@
+.venv/
+.idea/
+model/
+
+# Ignore all files in the .gitignore file
+!.gitignore
