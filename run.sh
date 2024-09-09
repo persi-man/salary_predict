@@ -1,3 +1,9 @@
+# Création d'un environment virtuel
+python -m venv venv
+
+# Activation de l'environnement virtuel
+.\venv\Scripts\activate
+
 # Installation des dépendances
 pip install -r requirements.txt
 

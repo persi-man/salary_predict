@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import os
 import glob
+from others_models import get_response
 
 def get_available_versions():
     model_files = glob.glob('model/salary_prediction_model_v*.joblib')
@@ -60,7 +61,7 @@ df = pd.read_csv('data/it_jobs_data.csv')
 st.title('Prédiction de salaire en informatique')
 
 # Création des onglets
-tab1, tab2 = st.tabs(["Prédiction", "Entraînement du modèle"])
+tab1, tab2, tab3 = st.tabs(["Prédiction", "Entraînement du modèle", "Utiliser un modèle classique"])
 
 with tab1:
     # Sélection de la version du modèle
@@ -119,3 +120,19 @@ with tab2:
         st.success(f"Nouveau modèle (version {new_version:.1f}) entraîné avec succès!")
         st.write(f"RMSE: ${rmse:.2f}")
         st.write(f"R2 Score: {r2:.4f}")
+
+with tab3:
+    st.header("Utilisation d'autres modèles")
+    model_selection = st.selectbox('Sélectionnez un modèle:', ['ChatGPT', 'LLaMA', 'Claude'])
+    user_input = st.text_input('Entrez votre question ou votre texte ici:')
+    if st.button('Envoyer'):
+        if user_input:
+            response = get_response(model_selection, user_input)
+            #st.write(response)
+            st.subheader(f"Réponse de {model_selection}:")
+            st.markdown(f"**Question:** {user_input}")
+            st.markdown(f"**Réponse:** {response}")
+        else:
+            st.warning("Veuillez entrer une question")
+    else:
+        st.info("Veuillez sélectionner un modèle et poser une question pour obtenir une réponse.")

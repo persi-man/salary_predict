@@ -1,6 +1,8 @@
 .venv/
 .idea/
 model/
+*/.env/*
+__pycache__/
 
 # Ignore all files in the .gitignore file
 !.gitignore
