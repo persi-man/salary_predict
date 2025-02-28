@@ -1,7 +1,9 @@
 .venv/
 .idea/
+.vscode
 model/
 */.env/*
+*/venv/*
 __pycache__/
 
 # Ignore all files in the .gitignore file
